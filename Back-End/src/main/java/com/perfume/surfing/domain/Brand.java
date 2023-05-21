@@ -1,10 +1,10 @@
-package com.perfume.surfing;
+package com.perfume.surfing.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
 
 
 @Entity
@@ -17,9 +17,9 @@ public class Brand {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "URL", nullable = false)
+    @Column(name = "URL", length = 1000)
     private String url;
 
-    @Column(name = "update", nullable = false)
+    @Column(name = "UPDATE", nullable = false)
     private Date created_at;
 }

@@ -1,10 +1,10 @@
-package com.perfume.surfing;
+package com.perfume.surfing.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Getter @Setter
@@ -15,7 +15,7 @@ public class PerfumeNote {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="PERFUME_ID")
-    private Perfume perfume;
+    private Perfume perfume_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="NOTE_ID")

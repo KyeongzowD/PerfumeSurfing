@@ -1,10 +1,10 @@
-package com.perfume.surfing;
+package com.perfume.surfing.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Setter @Getter
@@ -16,21 +16,20 @@ public class Perfume {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "PRICE", nullable = false)
+    @Column(name = "PRICE")
     private int price;
 
-    @Column(name = "URL", nullable = false)
+    @Column(name = "URL")
     private String url;
 
-    @Column(name = "IMAGE_NAME", nullable = false)
-    private String image_name;
-    @Column(name = "IMAGE_PATH", nullable = false)
-    private String image_path;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="IMAGE_ID")
+    private Image image_id;
 
-    @Column(name = "update", nullable = false)
+    @Column(name = "UPDATE", nullable = false)
     private Date created_at;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="BRAND_ID")
-    private Brand brand;
+    private Brand brand_id;
 }
