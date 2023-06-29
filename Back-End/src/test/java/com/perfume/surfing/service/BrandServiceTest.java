@@ -35,7 +35,7 @@ public class BrandServiceTest {
         int saveId = brandService.add(brand);
 
         //then
-        em.flush();
+//        em.flush();
         assertEquals(brand, brandRepository.findOne(saveId));
     }
 

@@ -14,17 +14,17 @@ public class PerfumeNote {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="PERFUME_ID")
+    @JoinColumn(name="PERFUME_ID", nullable = false)
     private Perfume perfume_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="NOTE_ID")
+    @JoinColumn(name="NOTE_ID", nullable = false)
     private Note note_id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "NOTE_TYPE", nullable = false)
     private NoteType note_type;
 
-    @Column(name = "update", nullable = false)
+    @Column(name = "CREATED_AT", nullable = false)
     private Date created_at;
 }

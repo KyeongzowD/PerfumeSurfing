@@ -17,11 +17,11 @@ public class Image {
     private int id;
 
     @Column(name = "IMAGE_NAME")
-    private String image_name;
+    private String name;
 
     @Column(name = "IMAGE_PATH")
-    private String image_path;
+    private String path;
 
-    @Column(name = "UPDATE", nullable = false)
+    @Column(name = "CREATED_AT", nullable = false)
     private Date created_at;
 }

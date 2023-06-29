@@ -20,6 +20,6 @@ public class Note {
     @JoinColumn(name="IMAGE_ID")
     private Image image_id;
 
-    @Column(name = "UPDATE", nullable = false)
+    @Column(name = "CREATE_AT", nullable = false)
     private Date created_at;
 }

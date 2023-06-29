@@ -26,10 +26,10 @@ public class Perfume {
     @JoinColumn(name="IMAGE_ID")
     private Image image_id;
 
-    @Column(name = "UPDATE", nullable = false)
+    @Column(name = "CREATED_AT", nullable = false)
     private Date created_at;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="BRAND_ID")
+    @JoinColumn(name="BRAND_ID", nullable = false)
     private Brand brand_id;
 }
