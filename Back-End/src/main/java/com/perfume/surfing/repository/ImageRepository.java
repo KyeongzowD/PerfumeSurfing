@@ -1,7 +1,6 @@
 package com.perfume.surfing.repository;
 
-
-import com.perfume.surfing.domain.Brand;
+import com.perfume.surfing.domain.Image;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -10,27 +9,27 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class BrandRepository {
+public class ImageRepository {
 
     private final EntityManager em;
 
     // Create =============================================
-    public void save(Brand brand) {
-        em.persist(brand);
+    public void save(Image image) {
+        em.persist(image);
     }
 
     // Read ===============================================
-    public Brand findOne(int id) {
-        return em.find(Brand.class, id);
+    public Image findOne(int id) {
+        return em.find(Image.class, id);
     }
 
-    public List<Brand> findAll() {
-        return em.createQuery("select b from Brand b", Brand.class)
+    public List<Image> findAll() {
+        return em.createQuery("select b from Image b", Image.class)
                 .getResultList();
     }
 
-    public List<Brand> findByName(String name){
-        return em.createQuery("select m from Brand m where m.name = :name", Brand.class)
+    public List<Image> findByName(String name){
+        return em.createQuery("select m from Image m where m.name = :name", Image.class)
                 .setParameter("name", name)
                 .getResultList();
     }

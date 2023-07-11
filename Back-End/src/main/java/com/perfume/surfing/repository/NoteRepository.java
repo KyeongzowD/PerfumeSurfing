@@ -1,7 +1,6 @@
 package com.perfume.surfing.repository;
 
-
-import com.perfume.surfing.domain.Brand;
+import com.perfume.surfing.domain.Note;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -10,27 +9,27 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class BrandRepository {
+public class NoteRepository {
 
     private final EntityManager em;
 
     // Create =============================================
-    public void save(Brand brand) {
-        em.persist(brand);
+    public void save(Note note) {
+        em.persist(note);
     }
 
     // Read ===============================================
-    public Brand findOne(int id) {
-        return em.find(Brand.class, id);
+    public Note findOne(int id) {
+        return em.find(Note.class, id);
     }
 
-    public List<Brand> findAll() {
-        return em.createQuery("select b from Brand b", Brand.class)
+    public List<Note> findAll() {
+        return em.createQuery("select b from Note b", Note.class)
                 .getResultList();
     }
 
-    public List<Brand> findByName(String name){
-        return em.createQuery("select m from Brand m where m.name = :name", Brand.class)
+    public List<Note> findByName(String name){
+        return em.createQuery("select m from Note m where m.name = :name", Note.class)
                 .setParameter("name", name)
                 .getResultList();
     }
