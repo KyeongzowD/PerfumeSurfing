@@ -17,9 +17,13 @@ public class PerfumeNote {
     @JoinColumn(name="PERFUME_ID", nullable = false)
     private Perfume perfume_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="NOTE_ID", nullable = false)
-    private Note note_id;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="NOTE_ID", nullable = false)
+//    private Note note_id;
+
+    @ManyToOne
+    @JoinColumn(name = "note_id")
+    private Note note;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "NOTE_TYPE", nullable = false)

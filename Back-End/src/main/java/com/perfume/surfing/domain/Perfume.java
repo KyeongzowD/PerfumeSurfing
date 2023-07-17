@@ -1,6 +1,7 @@
 package com.perfume.surfing.domain;
 
 import jakarta.persistence.*;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,5 +32,9 @@ public class Perfume {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="BRAND_ID", nullable = false)
-    private Brand brand_id;
+    private Brand brand_id; //brand
+
+    @OneToMany(mappedBy = "perfume")
+    private List<PerfumeNote> perfumeNotes;
+
 }
