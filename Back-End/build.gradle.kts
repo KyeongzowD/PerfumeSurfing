@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.perfume"
-version = "0.0.1-SNAPSHO```T"
+version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 configurations {
