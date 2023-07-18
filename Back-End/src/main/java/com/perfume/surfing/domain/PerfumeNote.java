@@ -15,11 +15,11 @@ public class PerfumeNote {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="PERFUME_ID", nullable = false)
-    private Perfume perfume_id;
+    private Perfume perfume;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="NOTE_ID", nullable = false)
-    private Note note_id;
+    private Note note;
 
 //    @ManyToOne
 //    @JoinColumn(name = "note_id")

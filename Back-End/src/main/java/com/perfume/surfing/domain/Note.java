@@ -3,7 +3,7 @@ package com.perfume.surfing.domain;
 import jakarta.persistence.*;
 import java.util.List;
 import lombok.Getter;
-import lombok.Setter;//
+import lombok.Setter;
 
 import java.sql.Date;
 
