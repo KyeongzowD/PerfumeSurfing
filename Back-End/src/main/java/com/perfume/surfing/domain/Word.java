@@ -19,9 +19,22 @@ public class Word {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "TYPE")
-    private WordType type;
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "TYPE")
+//    private WordType type;
 
-    @Column(name = "NAME_ID", nullable = false)
-    private int name_id;
+//    @Column(name = "NAME_ID", nullable = false)
+//    private int name_id;
+
+    @ManyToOne
+    @JoinColumn(name = "BRAND_ID", insertable = false, updatable = false)
+    private Brand brand;
+
+    @ManyToOne
+    @JoinColumn(name = "PERFUME_ID", insertable = false, updatable = false)
+    private Perfume perfume;
+
+    @ManyToOne
+    @JoinColumn(name = "NOTE_ID", insertable = false, updatable = false)
+    private Note note;
 }

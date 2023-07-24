@@ -1,6 +1,7 @@
 package com.perfume.surfing.domain;
 
 import jakarta.persistence.*;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,4 +23,8 @@ public class Note {
 
     @Column(name = "CREATE_AT", nullable = false)
     private Date created_at;
+
+    @OneToMany(mappedBy = "note")
+    private List<PerfumeNote> perfumeNotes;
+
 }
