@@ -37,7 +37,7 @@ public class BrandServiceTest {
 
         //then
         em.flush();
-        assertEquals(brand, brandRepository.findOne(saveId));
+        assertEquals(brand, brandRepository.findById(saveId));
     }
 
     public java.sql.Date sqlDate(){

@@ -36,7 +36,7 @@ public class ImageServiceTest {
 
         //then
         em.flush();
-        assertEquals(image, imageRepository.findOne(saveId));
+        assertEquals(image, imageRepository.findById(saveId));
     }
 
     public java.sql.Date sqlDate(){
