@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -20,18 +21,20 @@ public class BrandRepository {
     }
 
     // Read ===============================================
-    public Brand findOne(int id) {
-        return em.find(Brand.class, id);
+    public Optional <Brand> findById(int id) {
+        return Optional.ofNullable(em.find(Brand.class, id));
+    }
+
+    public Optional<Brand> findByName(String name){
+        List<Brand> result = em.createQuery("select m from Brand m where m.name= :name", Brand.class)
+                .setParameter("name", name)
+                .getResultList();
+
+        return result.stream().findAny();
     }
 
     public List<Brand> findAll() {
         return em.createQuery("select b from Brand b", Brand.class)
-                .getResultList();
-    }
-
-    public List<Brand> findByName(String name){
-        return em.createQuery("select m from Brand m where m.name = :name", Brand.class)
-                .setParameter("name", name)
                 .getResultList();
     }
 

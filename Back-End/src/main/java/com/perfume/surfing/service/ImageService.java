@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -23,13 +24,14 @@ public class ImageService {
     public int add(Image image){
         validateDuplicateBrand(image);  // 중복 검사
         imageRepository.save(image);
-        return image.getId();
+        return image.getId();//
     }
 
     private void validateDuplicateBrand(Image image){
-        List<Image> findImages = imageRepository.findByName(image.getName());
-        if(!findImages.isEmpty())
-            throw new IllegalStateException("이미 존재하는 이미지 입니다.");
+        imageRepository.findByName(image.getName())
+                .ifPresent(m->{
+                    throw new IllegalStateException("이미 존재하는 이미지입니다.");
+                });
     }
 
     // 검색 =============================
@@ -38,7 +40,7 @@ public class ImageService {
         return imageRepository.findAll();
     }
     // ID로 검색
-    public Image findOne(int imageId){
-        return imageRepository.findOne(imageId);
+    public Optional<Image> findOne(int imageId){
+        return imageRepository.findById(imageId);
     }
 }
