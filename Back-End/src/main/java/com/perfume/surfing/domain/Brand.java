@@ -3,6 +3,7 @@ package com.perfume.surfing.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.Mapping;
 
 import java.sql.Date;
 
@@ -22,4 +23,5 @@ public class Brand {
 
     @Column(name = "CREATED_AT", nullable = false)
     private Date created_at;
+
 }
