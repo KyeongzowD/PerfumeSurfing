@@ -42,4 +42,10 @@ public class BrandService {
     public Optional<Brand> findOne(int brandId){
         return brandRepository.findById(brandId);
     }
+
+    @Transactional
+    public void update(int id, String name){
+        Optional<Brand> brand=brandRepository.findById(id);
+        brand.flatMap();
+    }
 }
