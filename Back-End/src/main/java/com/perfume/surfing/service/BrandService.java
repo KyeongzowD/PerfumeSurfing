@@ -46,6 +46,6 @@ public class BrandService {
     @Transactional
     public void update(int id, String name){
         Optional<Brand> brand=brandRepository.findById(id);
-        brand.flatMap();
+        brand.flatMap();//
     }
 }
