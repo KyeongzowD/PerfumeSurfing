@@ -21,7 +21,7 @@ public class Note {
     @JoinColumn(name="IMAGE_ID")
     private Image image_id;
 
-    @Column(name = "CREATE_AT", nullable = false)
+    @Column(name = "CREATE_AT", nullable = true)
     private Date created_at;
 
     @OneToMany(mappedBy = "note")

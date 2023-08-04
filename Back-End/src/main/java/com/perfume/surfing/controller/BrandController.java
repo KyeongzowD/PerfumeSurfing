@@ -15,7 +15,7 @@ import java.util.Optional;
 public class BrandController {
 
     private final BrandService brandService;
-정
+
     @PostMapping("/api/b1/brands")
     public CreateBrandResponse saveBrandB1(@RequestBody @Valid CreateBrandRequest request){
         Brand brand=new Brand();

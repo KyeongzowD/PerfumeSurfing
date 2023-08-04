@@ -21,7 +21,7 @@ public class Brand {
     @Column(name = "URL", length = 1000)
     private String url;
 
-    @Column(name = "CREATED_AT", nullable = false)
+    @Column(name = "CREATED_AT", nullable = true)
     private Date created_at;
 
 }

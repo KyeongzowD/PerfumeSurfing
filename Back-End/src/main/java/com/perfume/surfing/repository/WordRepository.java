@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -27,5 +28,15 @@ public class WordRepository {
         return em.createQuery("SELECT w FROM Word w WHERE w.alias LIKE :alias", Word.class)
                 .setParameter("alias", alias + "%")
                 .getResultList();
+    }
+    // Update =============================================
+    public Optional<Word> updateWord(Long wordId, String newAlias, String newName) {
+        Word word = em.find(Word.class, wordId);
+        if (word != null) {
+            word.setAlias(newAlias);
+            word.setName(newName);
+            return Optional.of(word);
+        }
+        return Optional.empty();
     }
 }
