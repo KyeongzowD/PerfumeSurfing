@@ -46,6 +46,6 @@ public class BrandService {
     @Transactional
     public void update(int id, String name){
         Optional<Brand> brand=brandRepository.findById(id);
-        brand.flatMap();//
+        brand.of(name).map(String::valueOf);//이게 맞는지 잘 모르겠음
     }
 }
