@@ -29,6 +29,9 @@ public class PerfumeNote {
     @Column(name = "NOTE_TYPE", nullable = false)
     private NoteType note_type;
 
-    @Column(name = "CREATED_AT", nullable = false)
+    @Column(name = "CREATED_AT", nullable = false, updatable = false)
     private Date created_at;
+
+    @Column(name = "UPDATED_AT", nullable = false)
+    private Date updated_at;
 }

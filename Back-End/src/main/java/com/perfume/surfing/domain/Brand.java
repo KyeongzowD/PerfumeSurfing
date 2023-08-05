@@ -3,9 +3,9 @@ package com.perfume.surfing.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.Mapping;
 
 import java.sql.Date;
+import java.util.List;
 
 
 @Entity
@@ -21,7 +21,13 @@ public class Brand {
     @Column(name = "URL", length = 1000)
     private String url;
 
-    @Column(name = "CREATED_AT", nullable = false)
+    @OneToMany(mappedBy = "brand")
+    private List<Word> words;
+
+    @Column(name = "CREATED_AT", nullable = false, updatable = false)
     private Date created_at;
+
+    @Column(name = "UPDATED_AT", nullable = false)
+    private Date updated_at;
 
 }

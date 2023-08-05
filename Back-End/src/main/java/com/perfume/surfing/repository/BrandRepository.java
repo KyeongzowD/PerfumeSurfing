@@ -3,6 +3,7 @@ package com.perfume.surfing.repository;
 
 import com.perfume.surfing.domain.Brand;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -39,6 +40,16 @@ public class BrandRepository {
     }
 
     // Update =============================================
+    @Transactional
+    public Optional<Brand> updateBrand(int brandId, String newName, String newUrl) {
+        Brand brand = em.find(Brand.class, brandId);
+        if (brand != null) {
+            brand.setName(newName);
+            brand.setUrl(newUrl);
+            return Optional.of(brand);
+        }
+        return Optional.empty();
+    }
 
 
 

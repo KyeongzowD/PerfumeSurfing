@@ -5,6 +5,7 @@ import com.perfume.surfing.domain.Image;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +41,17 @@ public class ImageRepository {
     }
 
     // Update =============================================
+    @Transactional
+    public Optional<Image> updateImage(int imageId, String newName, String newPath) {
+        Image image = em.find(Image.class, imageId);
+        if (image != null) {
+            image.setName(newName);
+            image.setPath(newPath);
+            return Optional.of(image);
+        }
+        return Optional.empty();
+    }
+
 
 
     // Delete =============================================

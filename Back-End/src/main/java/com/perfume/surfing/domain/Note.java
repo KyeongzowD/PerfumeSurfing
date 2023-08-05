@@ -21,10 +21,17 @@ public class Note {
     @JoinColumn(name="IMAGE_ID")
     private Image image_id;
 
-    @Column(name = "CREATE_AT", nullable = false)
-    private Date created_at;
-
     @OneToMany(mappedBy = "note")
     private List<PerfumeNote> perfumeNotes;
+
+    @OneToMany(mappedBy = "note")
+    private List<Word> words;
+
+    @Column(name = "CREATED_AT", nullable = false, updatable = false)
+    private Date created_at;
+
+    @Column(name = "UPDATED_AT", nullable = false)
+    private Date updated_at;
+
 
 }

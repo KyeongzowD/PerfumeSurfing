@@ -22,6 +22,9 @@ public class Image {
     @Column(name = "IMAGE_PATH")
     private String path;
 
-    @Column(name = "CREATED_AT", nullable = false)
+    @Column(name = "CREATED_AT", nullable = false, updatable = false)
     private Date created_at;
+
+    @Column(name = "UPDATED_AT", nullable = false)
+    private Date updated_at;
 }
