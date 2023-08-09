@@ -15,13 +15,8 @@ public class WordRepository {
 
     private final EntityManager em;
 
-    public Word save(Word word) {
-        if (word.getId() == null) {
-            em.persist(word);
-            return word;
-        } else {
-            return em.merge(word);
-        }
+    public void save(Word word) {
+        em.persist(word);
     }
 
     public List<Word> findByAliasStartingWith(String alias) {

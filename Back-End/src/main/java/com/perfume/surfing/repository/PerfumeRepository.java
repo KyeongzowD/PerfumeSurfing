@@ -1,12 +1,11 @@
 package com.perfume.surfing.repository;
 
-import com.perfume.surfing.domain.Image;
 import com.perfume.surfing.domain.Perfume;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,21 +38,25 @@ public class PerfumeRepository {
                 .getResultList();
     }
 
-    // Update =============================================
-    @Transactional
-    public Optional<Perfume> updatePerfume(int perfumeId, String newName, int newPrice, String newUrl) {
-        Perfume perfume = em.find(Perfume.class, perfumeId);
-        if (perfume != null) {
-            perfume.setName(newName);
-            perfume.setPrice(newPrice);
-            perfume.setUrl(newUrl);
-            return Optional.of(perfume);
-        }
-        return Optional.empty();
+    public List<Perfume> findAllByWord(PerfumeSearch perfumeSearch){
+        return new ArrayList<>();
     }
 
-
-
-
-    // Delete =============================================
+//    // Update =============================================
+//    @Transactional
+//    public Optional<Perfume> updatePerfume(int perfumeId, String newName, int newPrice, String newUrl) {
+//        Perfume perfume = em.find(Perfume.class, perfumeId);
+//        if (perfume != null) {
+//            perfume.setName(newName);
+//            perfume.setPrice(newPrice);
+//            perfume.setUrl(newUrl);
+//            return Optional.of(perfume);
+//        }
+//        return Optional.empty();
+//    }
+//
+//
+//
+//
+//    // Delete =============================================
 }

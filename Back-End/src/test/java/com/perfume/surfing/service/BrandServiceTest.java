@@ -32,7 +32,7 @@ public class BrandServiceTest {
         brand.setCreated_at(sqlDate());
 
         //when
-        int saveId = brandService.add(brand);
+        Long saveId = brandService.add(brand);
         System.out.println("savedId: " + saveId);
 
         //then

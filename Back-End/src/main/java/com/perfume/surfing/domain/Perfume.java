@@ -1,6 +1,8 @@
 package com.perfume.surfing.domain;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,23 +29,38 @@ public class Perfume {
     @Column(name = "DISCONTINUE")
     private Discontinue discontinue;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="IMAGE_ID")
-    private Image image_id;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="BRAND_ID", nullable = false)
-    private Brand brand_id; //brand
+    private Brand brand;
+
+    @Embedded
+    private Image image;
 
     @OneToMany(mappedBy = "perfume")
-    private List<Word> words;
+    private List<Word> words = new ArrayList<>();
 
     @OneToMany(mappedBy = "perfume")
-    private List<PerfumeNote> perfumeNotes;
+    private List<PerfumeNote> perfumeNotes = new ArrayList<>();
 
     @Column(name = "CREATED_AT", nullable = false, updatable = false)
     private Date created_at;
 
     @Column(name = "UPDATED_AT", nullable = false)
     private Date updated_at;
+
+    //==연관관계 메서드==//
+    public void setWord(Word word){
+        words.add(word);
+        word.setPerfume(this);
+    }
+
+    public void setPerfumeNote(PerfumeNote perfumeNote){
+        perfumeNotes.add(perfumeNote);
+        perfumeNote.setPerfume(this);
+    }
+
+    public void setBrand(Brand brand){
+        this.brand = brand;
+        brand.getPerfumes().add(this);
+    }
 }

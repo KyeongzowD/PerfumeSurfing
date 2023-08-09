@@ -22,8 +22,8 @@ public class BrandRepository {
     }
 
     // Read ===============================================
-    public Optional <Brand> findById(int id) {
-        return Optional.ofNullable(em.find(Brand.class, id));
+    public Brand findById(Long id) {
+        return em.find(Brand.class, id);
     }
 
     public Optional<Brand> findByName(String name){
@@ -39,19 +39,19 @@ public class BrandRepository {
                 .getResultList();
     }
 
-    // Update =============================================
-    @Transactional
-    public Optional<Brand> updateBrand(int brandId, String newName, String newUrl) {
-        Brand brand = em.find(Brand.class, brandId);
-        if (brand != null) {
-            brand.setName(newName);
-            brand.setUrl(newUrl);
-            return Optional.of(brand);
-        }
-        return Optional.empty();
-    }
-
-
-
-    // Delete =============================================
+//    // Update =============================================
+//    @Transactional
+//    public Optional<Brand> updateBrand(int brandId, String newName, String newUrl) {
+//        Brand brand = em.find(Brand.class, brandId);
+//        if (brand != null) {
+//            brand.setName(newName);
+//            brand.setUrl(newUrl);
+//            return Optional.of(brand);
+//        }
+//        return Optional.empty();
+//    }
+//
+//
+//
+//    // Delete =============================================
 }

@@ -21,6 +21,9 @@ public class Word {
     @Column(name = "NAME", nullable = false)
     private String name;
 
+    @Column(name = "count", nullable = false)
+    private Long count;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "TYPE", nullable = false)
     private WordType type;

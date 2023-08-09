@@ -39,18 +39,18 @@ public class NoteRepository {
                 .getResultList();
     }
 
-    // Update =============================================
-    @Transactional
-    public Optional<Note> updateNote(int noteId, String newName, Image newImage) {
-        Note note = em.find(Note.class, noteId);
-        if (note != null) {
-            note.setName(newName);
-            note.setImage_id(newImage); // 이미지를 새로운 값으로 갱신
-            return Optional.of(note);
-        }
-        return Optional.empty();
-
-
-        // Delete =============================================
-    }
+//    // Update =============================================
+//    @Transactional
+//    public Optional<Note> updateNote(int noteId, String newName, Image newImage) {
+//        Note note = em.find(Note.class, noteId);
+//        if (note != null) {
+//            note.setName(newName);
+////            note.setImage_id(newImage); // 이미지를 새로운 값으로 갱신
+//            return Optional.of(note);
+//        }
+//        return Optional.empty();
+//
+//
+//        // Delete =============================================
+//    }
 }
