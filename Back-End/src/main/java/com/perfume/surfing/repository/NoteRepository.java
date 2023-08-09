@@ -5,6 +5,7 @@ import com.perfume.surfing.domain.Note;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +26,7 @@ public class NoteRepository {
         return Optional.ofNullable(em.find(Note.class, id));
     }
 
-    public Optional<Note> findByName(String name){
+    public Optional<Note> findByName(String name) {
         List<Note> result = em.createQuery("select m from Note m where m.name= :name", Note.class)
                 .setParameter("name", name)
                 .getResultList();
@@ -38,8 +39,18 @@ public class NoteRepository {
                 .getResultList();
     }
 
-    // Update =============================================
-
-
-    // Delete =============================================
+//    // Update =============================================
+//    @Transactional
+//    public Optional<Note> updateNote(int noteId, String newName, Image newImage) {
+//        Note note = em.find(Note.class, noteId);
+//        if (note != null) {
+//            note.setName(newName);
+////            note.setImage_id(newImage); // 이미지를 새로운 값으로 갱신
+//            return Optional.of(note);
+//        }
+//        return Optional.empty();
+//
+//
+//        // Delete =============================================
+//    }
 }

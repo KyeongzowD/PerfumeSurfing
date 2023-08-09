@@ -28,13 +28,13 @@ public class PerfumeNoteRepository {
     }
 
     public List<PerfumeNote> findByPerfumeId(int id){
-        return em.createQuery("select m from PerfumeNote m where m.perfume_id = :id", PerfumeNote.class)
+        return em.createQuery("select m from PerfumeNote m where m.perfume = :id", PerfumeNote.class)
                 .setParameter("id", id)
                 .getResultList();
     }
 
     public List<PerfumeNote> findByNoteId(int id){
-        return em.createQuery("select m from PerfumeNote m where m.note_id = :id", PerfumeNote.class)
+        return em.createQuery("select m from PerfumeNote m where m.note = :id", PerfumeNote.class)
                 .setParameter("id", id)
                 .getResultList();
     }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Entity
 @Getter
 @Setter
@@ -18,6 +20,9 @@ public class Word {
 
     @Column(name = "NAME", nullable = false)
     private String name;
+
+    @Column(name = "count", nullable = false)
+    private Long count;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "TYPE", nullable = false)
@@ -35,7 +40,11 @@ public class Word {
     @JoinColumn(name = "NOTE_ID", insertable = false, updatable = false)
     private Note note;
 
+    @Column(name = "CREATED_AT", nullable = false, updatable = false)
+    private Date created_at;
 
+    @Column(name = "UPDATED_AT", nullable = false)
+    private Date updated_at;
 
 
     //== 생성자 메서드 ==//
@@ -47,49 +56,33 @@ public class Word {
         this.name = name;
         this.alias = alias;
         this.type = type;
-        setMappedFields();
     }
-
 
     //== 연관관계 메서드 ==//
     /**
-     * WordType에 따라 Brand, Perfume, Note 필드 매핑
-     * 매핑하지 않은 필드들을 null로 설정
-     */
-    private void setMappedFields() {
-        switch (type) {
-            case BRAND:
-                setBrand();
-                perfume = null;
-                note = null;
-                break;
-            case PERFUME:
-                setPerfume();
-                brand = null;
-                note = null;
-                break;
-            case NOTE:
-                setNote();
-                brand = null;
-                perfume = null;
-                break;
-        }
-    }
-
-    /**
+     * 다형성
      * Brand 매핑
      * Perfume 매핑
      * Note 매핑
      */
-    private void setBrand(){
-        brand = null;
+    private void setEntity(Brand brand) {
+        this.brand = brand;
+        perfume = null;
+        note = null;
     }
 
-    private void setPerfume() {
+    private void setEntity(Perfume perfume){
+        this.perfume =  perfume;
+        brand = null;
+        note = null;
+    }
+
+    private void setEntity(Note note) {
+        this.note = note;
+        brand = null;
         perfume = null;
     }
 
-    private void setNote() {
-        note = null;
-    }
+
+
 }

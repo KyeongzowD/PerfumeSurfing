@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor    //lombok
 public class BrandService {
 
@@ -19,8 +19,8 @@ public class BrandService {
     // 브랜드 추가
     // @Transactional(readOnly = true) -> 클래스 전체를 ReadOnly를 취해 DB접근시 속도, 메모리 등 성능을 향상 시키고
     // 추가의 readOnly를 풀어 DB에 값 변경을 할 수 있도록 함
-
-    public int add(Brand brand){
+    @Transactional(readOnly = false)
+    public Long add(Brand brand){
         validateDuplicateBrand(brand);  // 중복 검사
         brandRepository.save(brand);
         return brand.getId();
@@ -38,14 +38,20 @@ public class BrandService {
     public List<Brand> findBrands(){
         return brandRepository.findAll();
     }
+
     // ID로 검색
-    public Optional<Brand> findOne(int brandId){
+    public Brand findOne(Long brandId){
         return brandRepository.findById(brandId);
     }
 
-    @Transactional
-    public void update(int id, String name){
-        Optional<Brand> brand=brandRepository.findById(id);
-        brand.of(name).map(String::valueOf);//이게 맞는지 잘 모르겠음
-    }
+    // 업데이트 ===========================
+    /**
+     * 영속성 컨텍스트가 자동 변경
+     */
+//    @Transactional
+//    public void updateBrand(int id, String name, String url){
+//        Brand brand = brandRepository.findById(id);
+//        brand.setName(name);
+//        brand.setUrl(url);
+//    }
 }

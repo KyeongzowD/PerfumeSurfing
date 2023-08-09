@@ -20,8 +20,8 @@ public class WordService {
     @Transactional(readOnly = false)
     public Word saveWordWithMapping(String name, String alias, WordType type) {
         Word word = new Word(name, alias, type);
-
-        return wordRepository.save(word);
+        wordRepository.save(word);
+        return word;
     }
 
     public List<Word> getAutocompleteWords(String alias) {
